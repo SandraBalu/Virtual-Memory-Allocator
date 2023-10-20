@@ -1,4 +1,4 @@
-## Virtual Memory Allocaor - 1
+# Virtual Memory Allocaor 
 
 ### Description:
 The program creates a virtual memory allocator which is represented by an
@@ -11,19 +11,19 @@ executed, at the end of the program run, memory errors are null.
 
 There are the following commands:
 
-#ALLOC_ARENA <size>
+## ALLOC_ARENA <size>
 For this command it will be built an arena that will have 2 fields: a numeric
 field in which we save its size, not allocating all the memory and a doubly 
 linked list currently empty.
 
-#DEALLOC_ARENA
+## DEALLOC_ARENA
 For this command we will go through the entire list of blocks in the arena. For
 each block, we release the list of miniblocks already allocated to it using an
 auxiliary function, then we release the member that holds the block information
 (date) and then we release the node itself. After all nodes have been
 deallocated, free the empty block list and the arena
 
-#ALLOC_BLOCK <address> <size>
+## ALLOC_BLOCK <address> <size>
 For this command, first check if the address and size given as parameter can be
 allocated in the arena. If the space that the new block occupies can be 
 allocated, then we first check whether the new block will stick to the input of
@@ -42,7 +42,7 @@ position where it will be added (blocks should be ordered ascending by starting
 address to make these verifications correct and easier) and allocate it in the 
 arena.
 
-#FREE_BLOCK <address>
+## FREE_BLOCK <address>
 For this command, we check if we have the possibility to free a miniblock 
 (meaning if there is a block that contains the address where the release will
 be made). If the address is at the beginning of a block that contains only one
@@ -54,7 +54,7 @@ blocks - we move all the miniblocks that were positioned before the deleted
 miniblock into a new block which we add to the arena before the block that was
 just removed.
 
-WRITE <address> <size> <buffer>
+## WRITE <address> <size> <buffer>
 To perform this command, we check if there is a block that contains the address
 where the write operation starts. If so, we check if the permissions of the
 miniblock in which the address is found allow writing. If the number of
@@ -66,7 +66,7 @@ permission W, the writing stops). If the miniblocks and their sizes were not
 sufficient to write all the desired characters, an appropriate message
 is displayed.
 
-#READ <address> <size>
+## READ <address> <size>
 For this command we first determine the block where the read will be performed.
 Then, we go through the miniblock list until we find the miniblock in which the
 start address is located and if the miniblock has the permission R the reading
@@ -78,14 +78,14 @@ the buffer is filled with their characters. At the end, if the number of
 characters that have been read is less than the desired one, an appropriate
 message is displayed and then the buffer.
 
-#PMAP
+## PMAP
 This command displays detailed details about the arena and its components. 
 First we display general details about the memory used and the number of 
 components. Then, by going through each block and each list of corresponding 
 miniblocks in turn, the arena is sectioned and all details about its components
 are displayed.
 
-#MPROTECT <address> <permissions>
+## MPROTECT <address> <permissions>
 For this command an address and various permissions are read and need to be 
 updated. After we determine if there is a miniblock in the arena at the address
 we are looking for, its permissions are replaced with the ones given as a
